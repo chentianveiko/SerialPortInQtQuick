@@ -13,6 +13,7 @@ Window {
     color: "#FFFFFF";
 
     ColumnLayout{
+        id: layoutSerialSetting;
         height: parent.height;
         width: 200;
 
@@ -371,32 +372,35 @@ Window {
                         anchors.left: parent.left;
                     }
 
-                    RowLayout{
-                        id:layoutSendInterval;
-                        height: 28;
-                        anchors.right: groupboxSendSetting.right;
-                        Layout.alignment: Qt.AlignRight;
+                    Rectangle{
+                        implicitWidth: 100;
+                        implicitHeight: 28;
+                        anchors.right: parent.right;
+                        color: configPart.color;
 
-                        TextField{
-                            id: textfieldSendInterval;
-                            textColor: (checkboxSendContinuousEnable.checked != true)? "#FF0033":"#336633";
-                            maximumLength: 16;
-                            implicitWidth: 80;
-                            text: qsTr("1000");
-                            horizontalAlignment: TextInput.AlignRight;
-                        }
+                        RowLayout{
+                            id:layoutSendInterval;
+                            height: 28;
+                            anchors.right: parent.right;
+                            Layout.alignment: Qt.AlignRight;
 
-                        Label{
-                            id: labelSendContinuousDanwei;
-                            anchors.left: textfieldSendInterval.right;
-                            anchors.leftMargin: 2;
-                            text: qsTr("ms");
+                            TextField{
+                                id: textfieldSendInterval;
+                                textColor: (checkboxSendContinuousEnable.checked != true)? "#FF0033":"#336633";
+                                maximumLength: 16;
+                                implicitWidth: 80;
+                                text: qsTr("1000");
+                                horizontalAlignment: TextInput.AlignRight;
+                            }
+
+                            Label{
+                                id: labelSendContinuousDanwei;
+                                anchors.left: textfieldSendInterval.right;
+                                anchors.leftMargin: 2;
+                                text: qsTr("ms");
+                            }
                         }
                     }
-
-
-
-
                 }
             }
 
@@ -454,8 +458,6 @@ Window {
                         }
                     }
                 }
-
-
 
                 Rectangle{
                     id: rectangleSerialPortPause;
@@ -538,6 +540,41 @@ Window {
                 Item {
                     width: 45;
                 }
+
+            }
+        }
+    }
+
+    Rectangle{
+        id: rectangleSendAndReceiveDis;
+        anchors.left: layoutSerialSetting.right;
+        anchors.top: parent.top;
+        implicitWidth: parent.width - 200;
+        implicitHeight: parent.height;
+        color: "#FFFFFF";
+
+        ColumnLayout{
+            id: layoutSendAndReceiveDis;
+            width: parent.width - layoutSerialSetting.width;
+            anchors.left: rectangleSendAndReceiveDis.left;
+            anchors.leftMargin: 2;
+            spacing: 4;
+            anchors.top: parent.top;
+
+            TextArea{
+                id: textareaReceivedDataDis;
+
+                implicitHeight: rectangleSendAndReceiveDis.height*2/3;
+                implicitWidth: rectangleSendAndReceiveDis.width-4;
+                anchors.left: rectangleSendAndReceiveDis.left;
+                anchors.leftMargin: 2;
+            }
+
+            TextArea{
+
+            }
+
+            ComboBox{
 
             }
         }
