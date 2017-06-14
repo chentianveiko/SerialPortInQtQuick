@@ -570,12 +570,52 @@ Window {
                 anchors.leftMargin: 2;
             }
 
-            TextArea{
+            Rectangle{
+                implicitHeight: rectangleSendAndReceiveDis.height*1/3-38;
+                implicitWidth: rectangleSendAndReceiveDis.width-4;
+                RowLayout{
+                    spacing: 5;
+
+                    TextArea{
+                        id: textareaSendDataDis;
+                        implicitWidth: rectangleSendAndReceiveDis.width-120;
+                        implicitHeight: rectangleSendAndReceiveDis.height*1/3-38;
+                        anchors.left: rectangleSendAndReceiveDis.left;
+                        anchors.leftMargin: 2;
+                    }
+
+                    // 3个按键按列排列,清空接收显示/清空发送显示/发送
+                    Rectangle{
+                        anchors.right: rectangleSendAndReceiveDis.right;
+                        anchors.top:textareaSendDataDis.top;
+                        implicitWidth: 120;
+                        ColumnLayout{
+                            spacing: 5;
+                            implicitWidth: 120;
+                            implicitHeight: rectangleSendAndReceiveDis.height*1/3-38;
+                            Button{
+
+                            }
+                            Button{
+
+                            }
+                            Button{
+
+                            }
+                        }
+                    }
+                }
+
 
             }
 
-            ComboBox{
 
+
+            ComboBox{
+                implicitHeight: 28
+                implicitWidth: rectangleSendAndReceiveDis.width-4;
+                anchors.left: rectangleSendAndReceiveDis.left;
+                anchors.leftMargin: 2;
             }
         }
     }
