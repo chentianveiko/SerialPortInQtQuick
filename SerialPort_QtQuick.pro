@@ -3,10 +3,10 @@ TEMPLATE = app
 QT += qml quick serialport
 CONFIG += c++11
 
-SOURCES += main.cpp \
-    cpp/main.cpp
+SOURCES += cpp/main.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    img.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
